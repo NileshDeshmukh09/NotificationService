@@ -1,5 +1,5 @@
 /**
- *  Controller for th Notification Request
+ *  Controller for the Notification Request
  */
 
 const Notification = require("../models/notification.model");
@@ -9,7 +9,7 @@ const Notification = require("../models/notification.model");
  * Accept the Notification  request and return the Tracking ID
  */
 
-function acceptNotificationRequest(req , res){
+async function acceptNotificationRequest(req , res){
 
     // Request Body
     const notificationObj = { 
@@ -36,6 +36,7 @@ function acceptNotificationRequest(req , res){
 }
 
 module.exports = { acceptNotificationRequest }
+
 
 /**
  *  Check the Notification Status ( if email is sent or not ) using the 

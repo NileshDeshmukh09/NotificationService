@@ -6,7 +6,8 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose= require("mongoose");
-const dbConfig = require("./configs/db.config")
+const dbConfig = require("./configs/db.config");
+const serverConfig = require("./configs/server.config");
 
 // Register the body-parser middleware to express
 app.use(bodyParser.json());
@@ -18,3 +19,16 @@ mongoose.connect(dbConfig.DB_URL , ()=>{
 }, err =>{
     console.log("Error while Connecting ", err);
 });
+/**
+ * Stitching the Routes
+ */
+require("./routes/ticketNotification.route")(app);
+
+
+/**
+ * Staart the server
+ */
+
+app.listen(serverConfig.PORT, (req, res)=>{
+    console.log(`Server setup at http://localhost:${serverConfig.PORT}`)
+})
