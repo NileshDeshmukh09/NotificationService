@@ -36,6 +36,7 @@ function acceptNotificationRequest(req , res){
 }
 
 module.exports = { acceptNotificationRequest }
+
 /**
  *  Check the Notification Status ( if email is sent or not ) using the 
  *  Tracking ID
