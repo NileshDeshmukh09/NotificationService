@@ -25,7 +25,7 @@ async function acceptNotificationRequest(req , res){
 
         res.status(201).send({
             status : "Accepted Request - It's in Progress.",
-            requestID : notification.ticketId,
+            ticketID : notification.ticketId,
         })
     }catch(err){
         console.log(err);
@@ -35,10 +35,28 @@ async function acceptNotificationRequest(req , res){
     }
 }
 
-module.exports = { acceptNotificationRequest }
-
-
 /**
  *  Check the Notification Status ( if email is sent or not ) using the 
  *  Tracking ID
  */
+
+async function getNotificationStatus(req, res){
+    const reqID = req.params.id;
+    try{
+        const notification = await Notification.findOne({
+            ticketId : reqID
+        });
+
+        res.status(200).send({
+            requestID : notification.ticketId,
+            status : notification.sentStatus
+        });
+    }catch(err){
+        console.log(err);
+
+        res.status(500).send({
+            message : "Internal error while fetching the Notification Status"
+        })
+    }
+}
+module.exports = { acceptNotificationRequest  , getNotificationStatus}

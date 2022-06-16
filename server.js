@@ -19,6 +19,7 @@ mongoose.connect(dbConfig.DB_URL , ()=>{
 }, err =>{
     console.log("Error while Connecting ", err);
 });
+
 /**
  * Stitching the Routes
  */
