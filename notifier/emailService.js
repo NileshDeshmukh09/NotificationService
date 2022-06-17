@@ -3,7 +3,6 @@
  */
 
 const nodemailer = require("nodemailer");
-const SMTPConnection = require("nodemailer/lib/smtp-connection");
 
 /**
  * I need to setup the nodeMailer for sending the EMails

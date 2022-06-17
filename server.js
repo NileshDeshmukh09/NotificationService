@@ -2,12 +2,20 @@
  * This file will havee the logic to start the server
  */
 
+
+/**
+ * Require the Cron file
+ */
+
+ require("./crons/cron");
+
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose= require("mongoose");
 const dbConfig = require("./configs/db.config");
 const serverConfig = require("./configs/server.config");
+
 
 // Register the body-parser middleware to express
 app.use(bodyParser.json());
@@ -24,6 +32,8 @@ mongoose.connect(dbConfig.DB_URL , ()=>{
  * Stitching the Routes
  */
 require("./routes/ticketNotification.route")(app);
+
+
 
 
 /**
